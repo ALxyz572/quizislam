@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Ramadhan</title>
+    <title>Kuis Islami</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
         body {
-            background: url('https://files.catbox.moe/fantnk.jpg') no-repeat center center/cover;
+            background: url('https://files.catbox.moe/inpkff.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,12 +25,8 @@
             text-align: center;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
-        .container h1 {
-            margin-bottom: 20px;
-        }
-        .quiz-container {
-            display: none;
-        }
+        .container h1 { margin-bottom: 20px; }
+        .quiz-container { display: none; }
         .btn {
             background: gold;
             color: black;
@@ -47,17 +38,9 @@
             border-radius: 5px;
             transition: 0.3s;
         }
-        .btn:hover {
-            background: orange;
-        }
-        .question {
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-        }
+        .btn:hover { background: orange; }
+        .question { font-size: 18px; margin-bottom: 15px; }
+        .options { display: flex; flex-direction: column; }
         .option {
             background: white;
             color: black;
@@ -67,27 +50,8 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .option:hover {
-            background: gold;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .ketupat {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: gold;
-            transform: rotate(45deg);
-            top: -50px;
-            animation: turun 5s linear infinite;
-        }
-        @keyframes turun {
-            0% { top: -50px; left: calc(50% - 25px); opacity: 1; }
-            100% { top: 100vh; left: calc(50% - 25px); opacity: 0; }
-        }
+        .option:hover { background: gold; }
+        .result { margin-top: 20px; font-size: 20px; font-weight: bold; }
         footer {
             position: absolute;
             bottom: 10px;
@@ -101,10 +65,10 @@
 </head>
 <body>
 
-<audio id="bgm" src="https://files.catbox.moe/g1r3hb.mp3"></audio>
+<audio id="bgm" src="https://files.catbox.moe/2ze2kt.mp3"></audio>
 
 <div class="container">
-    <h1>Selamat Datang Di Kuis Ramadhan</h1>
+    <h1>Selamat Datang Di Kuis Islami</h1>
     <button class="btn" onclick="mulaiKuis()">Mulai Kuis</button>
     <div class="quiz-container">
         <p class="question"></p>
@@ -120,28 +84,35 @@
 
 <script>
     const questions = [
-        { q: "Apa arti dari kata 'Ramadhan'?", a: ["Bulan Kesabaran", "Bulan Haji", "Bulan Kemenangan"], correct: 0 },
-        { q: "Berapa jumlah rakaat shalat tarawih yang dianjurkan?", a: ["8", "20", "12"], correct: 1 },
-        { q: "Zakat Fitrah wajib dikeluarkan oleh?", a: ["Orang Kaya", "Setiap Muslim", "Orang yang Mampu"], correct: 1 },
-        { q: "Kapan waktu sahur berakhir?", a: ["Saat Subuh", "Saat Maghrib", "Sebelum Dzuhur"], correct: 0 },
-        { q: "Berapa hari dalam bulan Ramadhan?", a: ["29 atau 30", "31", "28"], correct: 0 },
-        { q: "Apa pahala puasa Ramadhan bagi yang menjalankannya?", a: ["Diampuni Dosanya", "Rezeki Bertambah", "Bisa Makan Enak"], correct: 0 },
-        { q: "Makanan apa yang dianjurkan saat berbuka?", a: ["Kurma", "Ayam Goreng", "Pizza"], correct: 0 },
-        { q: "Apa keutamaan malam Lailatul Qadar?", a: ["Lebih baik dari 1000 bulan", "Puasa jadi lebih ringan", "Mendapat banyak uang"], correct: 0 },
-        { q: "Shalat witir dikerjakan setelah?", a: ["Tarawih", "Subuh", "Dzuhur"], correct: 0 },
-        { q: "Puasa hukumnya batal jika?", a: ["Minum air", "Marah", "Tidur"], correct: 0 },
-        { q: "Siapa yang boleh tidak berpuasa?", a: ["Musafir", "Anak kecil", "Orang Kaya"], correct: 0 },
-        { q: "Apa hukum berbuka dengan yang manis?", a: ["Sunnah", "Wajib", "Mubah"], correct: 0 },
-        { q: "Apa doa berbuka puasa?", a: ["Allahumma inni laka sumtu...", "Alhamdulillah...", "Bismillah..."], correct: 0 },
-        { q: "Di bulan Ramadhan, setan?", a: ["Dibelenggu", "Dihilangkan", "Dibakar"], correct: 0 },
-        { q: "Berpuasa artinya?", a: ["Menahan diri", "Makan banyak", "Bekerja lebih keras"], correct: 0 }
+        { q: "Siapa nabi terakhir dalam Islam?", a: ["Nabi Isa", "Nabi Muhammad", "Nabi Musa"], correct: 1 },
+        { q: "Berapa jumlah rukun Islam?", a: ["3", "5", "7"], correct: 1 },
+        { q: "Kitab suci umat Islam adalah?", a: ["Taurat", "Injil", "Al-Qur'an"], correct: 2 },
+        { q: "Kota suci umat Islam yang menjadi kiblat?", a: ["Madinah", "Yerusalem", "Mekah"], correct: 2 },
+        { q: "Bulan puasa dalam Islam disebut?", a: ["Syawal", "Ramadhan", "Dzulhijjah"], correct: 1 },
+        { q: "Hari raya setelah bulan Ramadhan?", a: ["Idul Fitri", "Idul Adha", "Maulid Nabi"], correct: 0 },
+        { q: "Shalat wajib dalam sehari ada?", a: ["3", "5", "7"], correct: 1 },
+        { q: "Zakat fitrah wajib dikeluarkan oleh?", a: ["Orang Kaya", "Setiap Muslim", "Orang yang Mampu"], correct: 1 },
+        { q: "Siapa malaikat yang mencatat amal baik?", a: ["Munkar", "Raqib", "Nakir"], correct: 1 },
+        { q: "Apa nama gua tempat Nabi Muhammad menerima wahyu?", a: ["Gua Tsur", "Gua Hira", "Gua Kahfi"], correct: 1 },
+        { q: "Siapa khalifah pertama Islam?", a: ["Umar bin Khattab", "Abu Bakar As-Siddiq", "Ali bin Abi Thalib"], correct: 1 },
+        { q: "Berapa jumlah juz dalam Al-Qur'an?", a: ["30", "50", "114"], correct: 0 },
+        { q: "Siapa malaikat yang meniup sangkakala?", a: ["Jibril", "Mikail", "Israfil"], correct: 2 },
+        { q: "Surah pertama dalam Al-Qur'an?", a: ["Al-Ikhlas", "Al-Fatihah", "Al-Baqarah"], correct: 1 },
+        { q: "Siapa ibu Nabi Isa?", a: ["Maryam", "Asiyah", "Khadijah"], correct: 0 },
+        { q: "Berapa jumlah rakaat shalat subuh?", a: ["2", "4", "3"], correct: 0 },
+        { q: "Apa nama malam yang lebih baik dari 1000 bulan?", a: ["Lailatul Qadar", "Malam Nisfu Sya'ban", "Malam Isra' Mi'raj"], correct: 0 },
+        { q: "Apa hukum puasa Ramadhan bagi umat Islam?", a: ["Sunnah", "Wajib", "Mubah"], correct: 1 },
+        { q: "Siapa nama istri pertama Nabi Muhammad?", a: ["Aisyah", "Khadijah", "Hafshah"], correct: 1 },
+        { q: "Di mana letak Ka'bah?", a: ["Madinah", "Mekah", "Palestina"], correct: 1 },
+        { q: "Apa nama surah yang paling panjang dalam Al-Qur'an?", a: ["Al-Mulk", "Al-Baqarah", "Ali Imran"], correct: 1 },
+        { q: "Siapa nabi yang bisa berbicara dengan binatang?", a: ["Nabi Yunus", "Nabi Sulaiman", "Nabi Daud"], correct: 1 },
+        { q: "Apa nama alat musik yang digunakan oleh malaikat Israfil?", a: ["Terompet", "Seruling", "Gitar"], correct: 0 },
     ];
     
     let index = 0, score = 0;
     const quizContainer = document.querySelector(".quiz-container");
     const questionEl = document.querySelector(".question");
     const optionsEl = document.querySelector(".options");
-    const resultEl = document.querySelector(".result");
 
     function mulaiKuis() {
         document.getElementById("bgm").play();
@@ -153,28 +124,13 @@
     function loadQuestion() {
         let q = questions[index];
         questionEl.textContent = q.q;
-        optionsEl.innerHTML = "";
-        q.a.forEach((opt, i) => {
-            let btn = document.createElement("button");
-            btn.textContent = opt;
-            btn.classList.add("option");
-            btn.onclick = () => checkAnswer(i);
-            optionsEl.appendChild(btn);
-        });
+        optionsEl.innerHTML = q.a.map((opt, i) => `<button class="option" onclick="checkAnswer(${i})">${opt}</button>`).join("");
     }
 
     function checkAnswer(i) {
         if (i === questions[index].correct) score++;
-        nextQuestion();
-    }
-
-    function nextQuestion() {
-        index++;
-        if (index < questions.length) {
-            loadQuestion();
-        } else {
-            quizContainer.innerHTML = `<h2>Skor Anda: ${score} dari ${questions.length}</h2>`;
-        }
+        if (++index < questions.length) loadQuestion();
+        else quizContainer.innerHTML = `<h2>Skor Anda: ${score} dari ${questions.length}</h2>`;
     }
 </script>
 
