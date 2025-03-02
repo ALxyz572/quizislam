@@ -3,176 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Islami - Created Alpian 😊</title>
+    <title>Kuis Ramadhan</title>
     <style>
-        /* Gaya umum */
-        body {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            background: url('https://files.catbox.moe/fantnk.jpg') no-repeat center center fixed;
-            background-size: cover;
+        * {
             margin: 0;
             padding: 0;
-            color: white;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: url('https://files.catbox.moe/fantnk.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             overflow: hidden;
         }
-
-        /* Animasi ketupat jatuh */
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        .container h1 {
+            margin-bottom: 20px;
+        }
+        .quiz-container {
+            display: none;
+        }
+        .btn {
+            background: gold;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: orange;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            background: white;
+            color: black;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .option:hover {
+            background: gold;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
         .ketupat {
             position: absolute;
             width: 50px;
             height: 50px;
-            background: url('https://i.ibb.co/Kb5GdbH/ketupat.png') no-repeat center;
-            background-size: contain;
-            animation: jatuh 6s linear infinite;
+            background: gold;
+            transform: rotate(45deg);
+            top: -50px;
+            animation: turun 5s linear infinite;
         }
-
-        @keyframes jatuh {
-            from { transform: translateY(-100px); }
-            to { transform: translateY(100vh); }
+        @keyframes turun {
+            0% { top: -50px; left: calc(50% - 25px); opacity: 1; }
+            100% { top: 100vh; left: calc(50% - 25px); opacity: 0; }
         }
-
-        /* Container utama */
-        .container {
-            width: 90%;
-            max-width: 600px;
-            background: rgba(0, 0, 0, 0.85);
+        footer {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .button {
-            background: linear-gradient(45deg, #ffcc00, #ff6600);
+            bottom: 10px;
             color: white;
-            padding: 12px 20px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: 0.3s;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 5px;
         }
-
-        .button:hover {
-            background: linear-gradient(45deg, #ff6600, #ffcc00);
-        }
-
-        .question {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .options button {
-            width: 100%;
-            padding: 12px;
-            margin: 5px 0;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            transition: 0.3s;
-            background: #222;
-            color: white;
-        }
-
-        .options button:hover {
-            background: #444;
-        }
-
-        .correct { background: green; color: white; }
-        .wrong { background: red; color: white; }
-
-        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <div id="ketupat-container"></div>
+<audio id="bgm" src="https://files.catbox.moe/g1r3hb.mp3"></audio>
 
-    <div class="container">
-        <h1>Kuis Islami - Crated Alpian 😊</h1>
-        <button class="button" onclick="startQuiz()">Mulai</button>
-
-        <div id="quiz" class="hidden">
-            <p id="question" class="question"></p>
-            <div id="options" class="options"></div>
-            <p id="score" class="hidden">Skor: <span id="scoreValue">0</span>/15</p>
-        </div>
+<div class="container">
+    <h1>Selamat Datang Di Kuis Ramadhan</h1>
+    <button class="btn" onclick="mulaiKuis()">Mulai Kuis</button>
+    <div class="quiz-container">
+        <p class="question"></p>
+        <div class="options"></div>
+        <button class="btn next-btn" onclick="nextQuestion()">Soal Berikutnya</button>
+        <p class="result"></p>
     </div>
+</div>
 
-    <audio id="startSound" src="https://files.catbox.moe/g1r3hb.mp3"></audio>
+<footer>
+    Dikembangkan oleh <b>Alpian</b> | 2025
+</footer>
 
-    <script>
-        /* Animasi Ketupat */
-        const ketupatContainer = document.getElementById("ketupat-container");
+<script>
+    const questions = [
+        { q: "Apa arti dari kata 'Ramadhan'?", a: ["Bulan Kesabaran", "Bulan Haji", "Bulan Kemenangan"], correct: 0 },
+        { q: "Berapa jumlah rakaat shalat tarawih yang dianjurkan?", a: ["8", "20", "12"], correct: 1 },
+        { q: "Zakat Fitrah wajib dikeluarkan oleh?", a: ["Orang Kaya", "Setiap Muslim", "Orang yang Mampu"], correct: 1 },
+        { q: "Kapan waktu sahur berakhir?", a: ["Saat Subuh", "Saat Maghrib", "Sebelum Dzuhur"], correct: 0 },
+        { q: "Berapa hari dalam bulan Ramadhan?", a: ["29 atau 30", "31", "28"], correct: 0 },
+        { q: "Apa pahala puasa Ramadhan bagi yang menjalankannya?", a: ["Diampuni Dosanya", "Rezeki Bertambah", "Bisa Makan Enak"], correct: 0 },
+        { q: "Makanan apa yang dianjurkan saat berbuka?", a: ["Kurma", "Ayam Goreng", "Pizza"], correct: 0 },
+        { q: "Apa keutamaan malam Lailatul Qadar?", a: ["Lebih baik dari 1000 bulan", "Puasa jadi lebih ringan", "Mendapat banyak uang"], correct: 0 },
+        { q: "Shalat witir dikerjakan setelah?", a: ["Tarawih", "Subuh", "Dzuhur"], correct: 0 },
+        { q: "Puasa hukumnya batal jika?", a: ["Minum air", "Marah", "Tidur"], correct: 0 },
+        { q: "Siapa yang boleh tidak berpuasa?", a: ["Musafir", "Anak kecil", "Orang Kaya"], correct: 0 },
+        { q: "Apa hukum berbuka dengan yang manis?", a: ["Sunnah", "Wajib", "Mubah"], correct: 0 },
+        { q: "Apa doa berbuka puasa?", a: ["Allahumma inni laka sumtu...", "Alhamdulillah...", "Bismillah..."], correct: 0 },
+        { q: "Di bulan Ramadhan, setan?", a: ["Dibelenggu", "Dihilangkan", "Dibakar"], correct: 0 },
+        { q: "Berpuasa artinya?", a: ["Menahan diri", "Makan banyak", "Bekerja lebih keras"], correct: 0 }
+    ];
+    
+    let index = 0, score = 0;
+    const quizContainer = document.querySelector(".quiz-container");
+    const questionEl = document.querySelector(".question");
+    const optionsEl = document.querySelector(".options");
+    const resultEl = document.querySelector(".result");
 
-        for (let i = 0; i < 10; i++) {
-            let ketupat = document.createElement("div");
-            ketupat.classList.add("ketupat");
-            ketupat.style.left = Math.random() * window.innerWidth + "px";
-            ketupat.style.animationDuration = Math.random() * 3 + 3 + "s";
-            ketupatContainer.appendChild(ketupat);
-        }
+    function mulaiKuis() {
+        document.getElementById("bgm").play();
+        document.querySelector(".btn").style.display = "none";
+        quizContainer.style.display = "block";
+        loadQuestion();
+    }
 
-        /* Soal Kuis */
-        const questions = [
-            { q: "Apa bulan ke-9 dalam kalender Islam?", a: ["Ramadhan", "Muharram", "Syawal", "Dzulhijjah"], correct: 0 },
-            { q: "Apa nama malam yang lebih baik dari 1000 bulan?", a: ["Lailatul Qadar", "Isra Mi'raj", "Nuzulul Quran", "Hari Arafah"], correct: 0 },
-            { q: "Apa hukum puasa Ramadhan bagi Muslim yang baligh dan sehat?", a: ["Wajib", "Sunnah", "Mubah", "Makruh"], correct: 0 },
-            { q: "Apa yang membatalkan puasa?", a: ["Makan & Minum", "Mandi", "Mencuci tangan", "Bernapas"], correct: 0 },
-            { q: "Apa ibadah malam yang dianjurkan selama Ramadhan?", a: ["Tarawih", "Sholat Dhuha", "Sholat Ied", "Sholat Istisqa"], correct: 0 },
-            { q: "Zakat Fitrah dibayarkan dalam bentuk?", a: ["Makanan pokok", "Emas", "Uang", "Pakaian"], correct: 0 },
-            { q: "Berapa rakaat sholat Tarawih biasa dilakukan?", a: ["8 atau 20", "2 atau 4", "10 atau 12", "30"], correct: 0 },
-            { q: "Siapa yang pertama kali menerima perintah puasa?", a: ["Nabi Muhammad", "Nabi Musa", "Nabi Adam", "Nabi Isa"], correct: 0 },
-            { q: "Kapan Al-Quran pertama kali diturunkan?", a: ["Ramadhan", "Syawal", "Dzulhijjah", "Muharram"], correct: 0 },
-            { q: "Apa keutamaan Lailatul Qadar?", a: ["Lebih baik dari 1000 bulan", "Hari Raya Idul Fitri", "Awal tahun baru Islam", "Hari pertama Ramadhan"], correct: 0 },
-            { q: "Kapan waktu berbuka puasa?", a: ["Saat matahari terbenam", "Setelah Isya", "Sebelum Subuh", "Saat Ashar"], correct: 0 },
-            { q: "Puasa mengajarkan kita untuk?", a: ["Menahan hawa nafsu", "Makan lebih banyak", "Mengurangi ibadah", "Menjadi malas"], correct: 0 },
-            { q: "Apa makanan yang dianjurkan saat berbuka?", a: ["Kurma", "Daging", "Ikan", "Sayur"], correct: 0 },
-            { q: "Apa doa berbuka puasa yang biasa dibaca?", a: ["Allahumma inni laka sumtu...", "Rabbana atina...", "Bismillah...", "Alhamdulillah..."], correct: 0 },
-            { q: "Puasa sunnah yang sangat dianjurkan setelah Ramadhan?", a: ["Puasa Syawal", "Puasa Arafah", "Puasa Daud", "Puasa Senin Kamis"], correct: 0 }
-        ];
+    function loadQuestion() {
+        let q = questions[index];
+        questionEl.textContent = q.q;
+        optionsEl.innerHTML = "";
+        q.a.forEach((opt, i) => {
+            let btn = document.createElement("button");
+            btn.textContent = opt;
+            btn.classList.add("option");
+            btn.onclick = () => checkAnswer(i);
+            optionsEl.appendChild(btn);
+        });
+    }
 
-        let currentQuestion = 0;
-        let score = 0;
+    function checkAnswer(i) {
+        if (i === questions[index].correct) score++;
+        nextQuestion();
+    }
 
-        function startQuiz() {
-            document.getElementById("startSound").play();
-            document.querySelector(".button").style.display = "none";
-            document.getElementById("quiz").classList.remove("hidden");
+    function nextQuestion() {
+        index++;
+        if (index < questions.length) {
             loadQuestion();
+        } else {
+            quizContainer.innerHTML = `<h2>Skor Anda: ${score} dari ${questions.length}</h2>`;
         }
-
-        function loadQuestion() {
-            if (currentQuestion < questions.length) {
-                document.getElementById("question").innerText = questions[currentQuestion].q;
-                let optionsHtml = "";
-                questions[currentQuestion].a.forEach((option, index) => {
-                    optionsHtml += `<button onclick="checkAnswer(${index})">${option}</button>`;
-                });
-                document.getElementById("options").innerHTML = optionsHtml;
-            } else {
-                document.getElementById("quiz").innerHTML = `<h2>Skor Anda: ${score}/15</h2>`;
-            }
-        }
-
-        function checkAnswer(index) {
-            if (index === questions[currentQuestion].correct) score++;
-            currentQuestion++;
-            document.getElementById("scoreValue").innerText = score;
-            document.getElementById("score").classList.remove("hidden");
-            loadQuestion();
-        }
-    </script>
+    }
+</script>
 
 </body>
 </html>
