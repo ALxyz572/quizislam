@@ -5,7 +5,7 @@
 <br>
 
 <!-- Animasi Mengetik -->
-## <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=30&duration=4000&color=00C6FF&center=true&vCenter=true&width=700&lines=Selamat+berkunjung+di+repositori+Alpin+Developer;Nikmati+perjalanan+dan+ilmu+di+sini!" />
+## <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=30&duration=4000&color=00C6FF&center=true&vCenter=true&width=700&lines=Selamat+berkunjung+di+Repo+Alpin+Developer;Nikmati+perjalanan+dan+ilmu+di+sini!" />
 
 ---
 
